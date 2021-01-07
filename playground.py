@@ -20,20 +20,26 @@ print('2 - Средний - вы можете умереть.')
 print('3 - Сложный: действуйте на свой страх и риск!')
 print('4 - Нереальный. Можно ошибиться только трижды.')
 print('\nВведите выбранный уровень сложности в виде цифры и нажмите Enter.')
-lvl = int(input())
-
-if lvl == 1:
-    tries = 33
-    print('Большое начинается с малого. Удачи!')
-elif lvl == 2:
-    tries = 12
-    print('Хорошей игры.')
-elif lvl == 3:
-    tries = 6
-    print('Удача любит смелых')
-elif lvl == 4:
-    tries = 3
-    print('А фокус очень простой: не думайте о боли.')
+while 1:
+    lvl = int(input())
+    if lvl == 1:
+        tries = 33
+        print('Большое начинается с малого. Удачи!')
+        break
+    elif lvl == 2:
+        tries = 12
+        print('Хорошей игры.')
+        break
+    elif lvl == 3:
+        tries = 6
+        print('Удача любит смелых')
+        break
+    elif lvl == 4:
+        tries = 3
+        print('А фокус очень простой: не думайте о боли.')
+        break
+    else:
+        print('Возьмите себя в руки! Тут всего четыре варианта.')
 
 words = get_content(0, None)
 word = random.choice(words).split('\n')[0]
