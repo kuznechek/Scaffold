@@ -12,7 +12,7 @@ def get_content(index, code):
 def output(result):
     strings = get_content(result, 'utf-8')
     for s in strings:
-        print(s)
+        print(s.split('\n')[0])
 
 print('Добро пожаловать в игру "Виселица". Пожалуйста, выберите уровень:')
 print('1 - Лёгкий - нет ограничений по ошибкам')
@@ -28,11 +28,11 @@ while 1:
         break
     elif lvl == 2:
         tries = 12
-        print('Хорошей игры.')
+        print('Средний уровень? Хорошей игры.')
         break
     elif lvl == 3:
         tries = 6
-        print('Удача любит смелых')
+        print('Сложный! Удача любит смелых :]')
         break
     elif lvl == 4:
         tries = 3
