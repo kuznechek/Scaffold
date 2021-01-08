@@ -5,15 +5,15 @@ files = ['done_dic.txt', 'rep.txt', 'die.txt']
 
 def get_content(index, code):
     file_input = open(files[index], 'r', encoding=code)
-    sp = file_input.readlines()
+    strings = file_input.readlines()
     file_input.close()
-    return sp
+    return strings
 
 def output(result):
     strings = get_content(result, 'utf-8')
     for s in strings:
         print(s.split('\n')[0])
-
+#menu
 print('Добро пожаловать в игру "Виселица". Пожалуйста, выберите уровень:')
 print('1 - Лёгкий - нет ограничений по ошибкам')
 print('2 - Средний - вы можете умереть.')
