@@ -1,18 +1,7 @@
 import random
 import string
+from classes import *
 
-files = ['done_dic.txt', 'rep.txt', 'die.txt']
-
-def get_content(index, code):
-    file_input = open(files[index], 'r', encoding=code)
-    strings = file_input.readlines()
-    file_input.close()
-    return strings
-
-def output(result):
-    strings = get_content(result, 'utf-8')
-    for s in strings:
-        print(s.split('\n')[0])
 #menu
 print('Добро пожаловать в игру "Виселица". Пожалуйста, выберите уровень:')
 print('1 - Лёгкий - нет ограничений по ошибкам')
