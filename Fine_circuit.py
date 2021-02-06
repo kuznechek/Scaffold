@@ -35,8 +35,6 @@ while True:
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    click = Click(event.pos, 10)
-                    click.draw(screen)
                     for obj in gameobjects:
                         if obj.check_collisions(event.pos) == True and obj.name in word.undiscovered:
                             word.update(obj.name)

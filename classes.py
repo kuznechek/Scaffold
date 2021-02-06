@@ -25,6 +25,26 @@ FPS = 30
 a = 100
 b = HEIGHT/2 - 100
 
+class Rectangle(pygame.sprite.Sprite):
+    def __init__(self, name, img, x, y):
+        pygame.sprite.Sprite.__init__(self)
+        self.name = name
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.center = (x, y)
+
+    def check_collisions(self, coord):
+        x, y = coord[0], coord[1]
+        if x >= self.rect[0] and x <= self.rect[2] + self.rect[0]:
+            if y >= self.rect[1] and y <= self.rect[3] + self.rect[1]:
+                #self.kill()
+                return True
+        return False
+
+    def kill_me(self):
+        print('"' + self.name + '" WAS KILLED.')
+        self.kill()
+
 class Word():
     def __init__(self, fullname, hidden):
         self.full = fullname
@@ -68,35 +88,6 @@ def draw_alphabet():
             w += k
         w, x, y, h = w0, x+11, y+11, h+100
     return alphabet
-
-class Rectangle(pygame.sprite.Sprite):
-    def __init__(self, name, img, x, y):
-        pygame.sprite.Sprite.__init__(self)
-        self.name = name
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.center = (x, y)
-
-    def check_collisions(self, coord):
-        x, y = coord[0], coord[1]
-        if x >= self.rect[0] and x <= self.rect[2] + self.rect[0]:
-            if y >= self.rect[1] and y <= self.rect[3] + self.rect[1]:
-                #self.kill()
-                return True
-        return False
-
-    def kill_me(self):
-        print('"' + self.name + '" WAS KILLED.')
-        self.kill()
-
-class Click(pygame.sprite.Sprite):
-    def __init__(self, coord, r):
-        self.center = coord
-        self.radius = r
-        self.colour = RED
-
-    def draw(self, surface):
-        pygame.draw.circle(surface, self.colour, self.center, self.radius)
 
 def get_content(index, code):
     file_input = open(files[index], 'r', encoding=code)
