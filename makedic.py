@@ -1,11 +1,11 @@
-input = open('dic.txt', 'r', encoding = 'utf-8')
+input = open('Словарь.txt', 'r', encoding = 'utf-8')
 output = open('done_dic.txt', 'w')
 k, c, = 0, 0
 sp = input.readlines()
 for s in sp:
     k += 1
-    if '-' not in s and len(s) > 7 and len(s) < 11:
-        output.write(s)
+    if '-' not in s and len(s) < 11:
+        output.write(s.lower())
         c += 1
 input.close()
 output.close()
@@ -15,17 +15,6 @@ print('Нормальных :', c)
 
 
 
-
-
-
-letter = input()
-# if letter in used:
-# print('Вы уже проверяли эту букву!')
-# continue
-
-# used.add(letter)
-
-letter = input()
 if letter in word:
     indexes = list()
     l = len(word)
@@ -35,7 +24,5 @@ if letter in word:
 
     for ind in indexes:
         s[ind] = letter
-    m = ''.join(s)
-    write_word(m, all_sprites, a, b)
-
-
+    hidden_word = ''.join(s)
+    write_word(hidden_word, all_sprites, a, b)
