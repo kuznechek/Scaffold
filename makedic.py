@@ -11,18 +11,3 @@ input.close()
 output.close()
 print('Всего слов :', k)
 print('Нормальных :', c)
-
-
-
-
-if letter in word:
-    indexes = list()
-    l = len(word)
-    for i in range(l):
-        if word[i] == letter:
-            indexes.append(i)
-
-    for ind in indexes:
-        s[ind] = letter
-    hidden_word = ''.join(s)
-    write_word(hidden_word, all_sprites, a, b)
