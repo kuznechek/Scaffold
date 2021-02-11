@@ -32,12 +32,20 @@ while True:
     words = get_content(0, None)
     choice = random.choice(words).split('\n')[0].upper()
     word = Word(choice, '_' * len(choice))
-    print(word.full)
+    #print(word.full)
+    tryies = 10
 
     while True:
         clock.tick(FPS)
 
-        #tryies = 10
+
+        
+        if word.game == word.full:
+            break
+        
+        if tryies == 9:
+            final = draw_decs(2, 980, 400, decs)
+            decorations_group.add(final)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -45,13 +53,16 @@ while True:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     for obj in gameobjects_group:
-                        if obj.check_collisions(event.pos) == True and obj.name in word.undiscovered:
-                            word.update(obj.name)
+                        if obj.check_collisions(event.pos) == True:
                             obj.kill_me()
+                            if obj.name in word.undiscovered:
+                                word.update(obj.name)
+                            elif obj.name not in word.full:
+                                screamers_group.add(draw_decs(random.randint(0,2), 640, 360, screamers))
+                                screamer = True
+                                tryies -= 1
+                                print(tryies)
                             break
-                        elif obj.check_collisions(event.pos) == True and obj.name not in word.full:
-                            screamers_group.add(draw_decs(random.randint(0,2), 640, 360, screamers))
-                            screamer = True
 
         if screamer == True:
             screamers_group.draw(screen)
@@ -66,6 +77,6 @@ while True:
             gameobjects_group.draw(screen)
 
             # Написать слово
-            word.draw(decorations_group, a, b)
+            word.draw(decorations_group)
             pygame.display.flip()
     break
